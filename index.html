@@ -1,0 +1,220 @@
+<html><head><base href="https://todoey.app/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>todoey - Streamline Your Tasks Anywhere</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary-color: #FFD700;
+        --secondary-color: #FFA500;
+        --bg-color: #1A1A1A;
+        --text-color: #F5F5F5;
+    }
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+    }
+    .logo {
+        font-size: 2em;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+    .cta-button {
+        background-color: var(--primary-color);
+        color: var(--bg-color);
+        border: none;
+        padding: 12px 24px;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .cta-button:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+    }
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 80px;
+        gap: 50px;
+    }
+    .hero-content {
+        flex: 1;
+    }
+    .hero-image {
+        flex: 1;
+        position: relative;
+    }
+    .hero-image::after {
+        content: '';
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        bottom: 20px;
+        left: 20px;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        z-index: -1;
+        border-radius: 12px;
+        opacity: 0.2;
+    }
+    .hero-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+    .hero-image:hover img {
+        transform: scale(1.02);
+    }
+    h1 {
+        font-size: 3.5em;
+        font-weight: 700;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+    p {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-top: 100px;
+    }
+    .feature {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 30px;
+        transition: all 0.3s ease;
+    }
+    .feature:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(255, 215, 0, 0.1);
+    }
+    .feature-icon {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+    .feature h2 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+    .feature p {
+        font-size: 1em;
+        opacity: 0.8;
+    }
+    @media (max-width: 768px) {
+        .hero {
+            flex-direction: column;
+            text-align: center;
+        }
+        .hero-image {
+            margin-top: 40px;
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">todoey</div>
+        </header>
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Simplify Your Day, Anywhere</h1>
+                <p>todoey is the minimalist task management app designed for efficiency across all your devices. Streamline your workflow, boost your productivity, and conquer your goals with our intuitive, reactive interface.</p>
+                <a href="https://app.todoey.app" class="cta-button">Launch App</a>
+            </div>
+            <div class="hero-image">
+                <img src="/a/ad5c4452-a081-42e7-94f8-3b63840881eb" alt="todoey application interface showcasing a minimalist dark themed todo list with smart add functionality" width="550" height="330">
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <div class="feature-icon">🚀</div>
+                <h2>Swift Task Entry</h2>
+                <p>Quickly add tasks with our streamlined input system. Just type and go!</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌓</div>
+                <h2>Dark Mode by Default</h2>
+                <p>Easy on the eyes, our dark interface enhances focus and reduces strain.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h2>Reactive UI on Any Device</h2>
+                <p>Experience a seamless, responsive interface that adapts perfectly to all your devices.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Simple animation for features on scroll
+            const features = document.querySelectorAll('.feature');
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            features.forEach(feature => {
+                feature.style.opacity = 0;
+                feature.style.transform = 'translateY(20px)';
+                feature.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(feature);
+            });
+
+            // Add a subtle hover effect to the hero image
+            const heroImage = document.querySelector('.hero-image img');
+            heroImage.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = heroImage.getBoundingClientRect();
+                const x = (e.clientX - left) / width - 0.5;
+                const y = (e.clientY - top) / height - 0.5;
+                
+                heroImage.style.transform = `perspective(1000px) rotateY(${x * 10}deg) rotateX(${y * -10}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+
+            heroImage.addEventListener('mouseleave', () => {
+                heroImage.style.transform = 'rotate(0deg) scale3d(1, 1, 1)';
+            });
+        });
+    </script>
+</body>
+</html>
